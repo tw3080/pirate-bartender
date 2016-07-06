@@ -13,6 +13,46 @@ var noButton = document.getElementById('no-button');
 var drinkContainer = document.getElementById('drink-container');
 */
 
+function Worker(name) {
+  this.name = name;
+  this.customers = [];
+}
+
+Worker.prototype.greet = function() {
+  var known = false;
+  var name = prompt("So, what's your name?");
+  for (var i=0; i<this.customers.length; i++) {
+    if (this.customers[i].name === name) {
+      alert("Welcome back " + name);
+      known = true;
+      break;      
+    } 
+  }
+  if (!known) {
+    this.customers.push(new Customer(name));
+  }
+}
+
+function Bartender(name, questions) {
+  Worker.call(this, name);
+  this.questions = questions;
+}
+
+Bartender.prototype = Object.create(Worker.prototype);
+Bartender.prototype.constructor = Bartender;
+
+Bartender.prototype.askQuestions = function() {
+  // Code goes here
+}
+
+var bud = new Bartender('Bud', questions);
+
+function Customer(name) {
+  this.name = name;
+  this.drink = "";
+  this.burger = "";
+}
+
 // Question constructor
 function Question(type, question) {
   this.type = type;
@@ -77,6 +117,8 @@ function init() {
 
 $(function() {
   init();
+  bud.greet();
+  bud.greet();
   console.log(pantry);
 });
 
