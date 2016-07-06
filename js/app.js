@@ -4,6 +4,7 @@ var pantry;
 var preferences = {};
 var count;
 var drinkPrefs = $('#drink-prefs');
+var makeDrinkBtn = $('#make-drink-btn');
 /*
 var questionContainer = document.getElementById('question-container');
 var questionText = document.getElementById('question-text');
@@ -35,14 +36,13 @@ function Ingredient(type, name) {
 
 // List of ingredients
 ingredientList = [
-  /*
   // Another way to make the ingredients list? Couldn't this just replace the pantry?
   new Ingredient('strong', ['rum', 'whiskey', 'gin']),
   new Ingredient('salty', ['olives', 'salt rim']),
   new Ingredient('bitter', ['bitters', 'tonic', 'lemon twist']),
   new Ingredient('sweet', ['simple syrup', 'honey', 'coke']),
   new Ingredient('fruity', ['orange slice', 'cassis', 'cherry'])
-  */
+  /*
   new Ingredient('strong', 'rum'),
   new Ingredient('strong', 'whiskey'),
   new Ingredient('strong', 'gin'),
@@ -57,6 +57,7 @@ ingredientList = [
   new Ingredient('fruity', 'orange slice'),
   new Ingredient('fruity', 'cassis'),
   new Ingredient('fruity', 'cherry')
+  */
 ];
 
 // Pantry constructor
@@ -76,6 +77,38 @@ function init() {
 
 $(function() {
   init();
+  console.log(pantry);
+});
+
+// Events
+makeDrinkBtn.on('click', function() {
+  for (var i = 0; i < questions.length; i++) {
+    if ($('#box' + (i + 1)).prop('checked')) {
+      console.log('box' + (i + 1) + ' checked');
+      preferences[questions[i].question] = true;
+    } else {
+      preferences[questions[i].question] = false;
+    }
+  }
+  console.log(preferences);
+  /*
+  if ($('#box1').prop('checked')) {
+    preferences.
+    console.log('box1 checked');
+  }
+  if ($('#box2').prop('checked')) {
+    console.log('box2 checked');
+  }
+  if ($('#box3').prop('checked')) {
+    console.log('box3 checked');
+  }
+  if ($('#box4').prop('checked')) {
+    console.log('box4 checked');
+  }
+  if ($('#box5').prop('checked')) {
+    console.log('box5 checked');
+  }
+  */
 });
 
 /*
