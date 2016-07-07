@@ -43,7 +43,7 @@ function Pantry(ingredients) {
 Pantry.prototype.getRandom = function(i) {
   var numIngredients = this.ingredients[i].name.length;
   var random = Math.floor(Math.random() * numIngredients);
-  // console.log(this.ingredients[i].name[random]);
+  console.log(this.ingredients[i].name[random]);
   return this.ingredients[i].name[random];
 };
 
@@ -110,12 +110,3 @@ function makeDrinkTry() {
     pantry.getRandom(i);
   }
 }
-
-/*
-// Populate list of drink options
-function init() {
-  for (var i = 0; i < questions.length; i++) {
-    drinkPrefs.append('<input type="checkbox" id="box' + (i + 1) + '"/>' + questions[i].question + '<br/>');
-  }
-}
-*/
