@@ -40,11 +40,11 @@ function Pantry(ingredients) {
   this.ingredients = ingredients;
 }
 
+// Returns a random ingredient from the pantry
 Pantry.prototype.getRandom = function(i) {
   var numIngredients = this.ingredients[i].name.length;
   var random = Math.floor(Math.random() * numIngredients);
-
-  console.log(numIngredients);
+  console.log(this.ingredients[i].name[random]);
 };
 
 // Bartender constructor
@@ -69,16 +69,17 @@ Bartender.prototype.getPreferences = function() {
       preferences[questions[i].question] = false;
     }
   }
-  console.log(preferences);
+  // console.log(preferences);
 };
 
 // Construct a drink made up of random ingredients from the user's preferences
+// This doesn't actually do anything besides log to the console at the moment
 Bartender.prototype.makeDrink = function(preferences) {
   for (var prop in preferences) {
     if (preferences[prop]) {
-      console.log(preferences[prop]);
+      // console.log(preferences[prop]);
     } else {
-      console.log(preferences[prop]);
+      // console.log(preferences[prop]);
     }
   }
 };
@@ -97,14 +98,13 @@ makeDrinkBtn.on('click', function() {
 
 // Execute on load
 $(function() {
-  // makeDrinkTry();
+  makeDrinkTry();
   // console.log(pantry.ingredients[0].type);
   // console.log(pantry.ingredients[0].name);
   bartender.askQuestions();
 });
 
 // NOT REALLY USING THESE METHODS RIGHT NOW
-/*
 // Testing functionality of getRandom()
 function makeDrinkTry() {
   for (var i = 0; i < questions.length; i++) {
@@ -118,4 +118,3 @@ function init() {
     drinkPrefs.append('<input type="checkbox" id="box' + (i + 1) + '"/>' + questions[i].question + '<br/>');
   }
 }
-*/
