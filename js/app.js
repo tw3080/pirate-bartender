@@ -1,7 +1,6 @@
 var questions = [];
 var ingredientList = [];
 var preferences = {};
-var count;
 var drinkPrefs = $('#drink-prefs');
 var makeDrinkBtn = $('#make-drink-btn');
 
@@ -44,7 +43,8 @@ function Pantry(ingredients) {
 Pantry.prototype.getRandom = function(i) {
   var numIngredients = this.ingredients[i].name.length;
   var random = Math.floor(Math.random() * numIngredients);
-  console.log(this.ingredients[i].name[random]);
+  // console.log(this.ingredients[i].name[random]);
+  return this.ingredients[i].name[random];
 };
 
 // Bartender constructor
@@ -69,17 +69,17 @@ Bartender.prototype.getPreferences = function() {
       preferences[questions[i].question] = false;
     }
   }
-  // console.log(preferences);
+  console.log(preferences);
 };
 
 // Construct a drink made up of random ingredients from the user's preferences
 // This doesn't actually do anything besides log to the console at the moment
-Bartender.prototype.makeDrink = function(preferences) {
+Bartender.prototype.createDrink = function(preferences) {
   for (var prop in preferences) {
     if (preferences[prop]) {
-      // console.log(preferences[prop]);
+      console.log(preferences[prop]);
     } else {
-      // console.log(preferences[prop]);
+      console.log(preferences[prop]);
     }
   }
 };
@@ -93,7 +93,7 @@ var pantry = new Pantry(ingredientList);
 // Events
 makeDrinkBtn.on('click', function() {
   bartender.getPreferences();
-  bartender.makeDrink(preferences);
+  bartender.createDrink(preferences);
 });
 
 // Execute on load
@@ -104,7 +104,6 @@ $(function() {
   bartender.askQuestions();
 });
 
-// NOT REALLY USING THESE METHODS RIGHT NOW
 // Testing functionality of getRandom()
 function makeDrinkTry() {
   for (var i = 0; i < questions.length; i++) {
@@ -112,9 +111,11 @@ function makeDrinkTry() {
   }
 }
 
+/*
 // Populate list of drink options
 function init() {
   for (var i = 0; i < questions.length; i++) {
     drinkPrefs.append('<input type="checkbox" id="box' + (i + 1) + '"/>' + questions[i].question + '<br/>');
   }
 }
+*/
